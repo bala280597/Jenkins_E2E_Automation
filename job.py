@@ -19,6 +19,24 @@ class Jenkins:
         self.deploy = deploy
         self.jenkins_username = jenkins_username
         self.jenkins_password = jenkins_password
+    
+    def sonar_automation(self):
+        sonar = SonarQubeClient(sonarqube_url="http://104.198.141.127:9000", username=self.jenkins_username, password=self.jenkins_password)
+        repository=self.repo
+        repo = repository.split('/')
+        repo_name = repo[1]
+        try:
+          sonar.projects.create_project(project="Bala", name="Bala", visibility="private")
+        except:
+          print("Repo already exist")
+        else:
+          try:  
+            sonar.webhooks.create_webhook(name= repo_name,
+                                           project= repo_name,
+                                           url="http://34.102.134.5:8080/sonarqube-webhook/",
+                                           secret=self.jenkins_password)
+          except:
+            print("WebHook already exist")
 
     def sql_insert_data(self):
         cnx = mysql.connector.connect(user='root', password=self.jenkins_password,
@@ -105,5 +123,6 @@ if __name__ == '__main__':
     jenkins_password = sys.argv[8]
     
     job_automation = Jenkins(jobname,token,repo,branch,build,deploy,jenkins_username,jenkins_password)
-    job_automation.template()
+    #job_automation.template()
+    job_automation.sonar_automation()
     
