@@ -6,7 +6,7 @@ from github import InputGitTreeElement
 import sys
 import jenkins
 import mysql.connector
-
+from sonarqube import SonarQubeClient
 
 class Jenkins:
 
