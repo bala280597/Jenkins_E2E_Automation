@@ -37,6 +37,7 @@ class Jenkins:
                                            secret=self.jenkins_password)
           except:
             print("WebHook already exist")
+               
 
     def sql_insert_data(self):
         cnx = mysql.connector.connect(user='root', password=self.jenkins_password,
@@ -54,6 +55,7 @@ class Jenkins:
         cursor.execute(add_app, data_app)
         cnx.commit()
         cnx.close()
+        self.sonar_automation()
 
     def jenkins_pipeline(self):
         Config_xml = open("config.xml", "r")
@@ -123,6 +125,4 @@ if __name__ == '__main__':
     jenkins_password = sys.argv[8]
     
     job_automation = Jenkins(jobname,token,repo,branch,build,deploy,jenkins_username,jenkins_password)
-    #job_automation.template()
-    job_automation.sonar_automation()
-    
+    job_automation.template()
