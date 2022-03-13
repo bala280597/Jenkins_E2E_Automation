@@ -126,5 +126,5 @@ if __name__ == '__main__':
     jenkins_password = sys.argv[8]
     stack = sys.argv[9]
     
-    job_automation = Jenkins(jobname,token,repo,branch,build,deploy,jenkins_username,jenkins_password)
+    job_automation = Jenkins(jobname,token,repo,branch,build,deploy,jenkins_username,jenkins_password,stack)
     job_automation.template()
