@@ -58,7 +58,7 @@ pipeline{
 ```
 # Sonar Integration
 Sonarqube is integrated to analyze source code.
-![image](https://user-images.githubusercontent.com/47313756/155874508-288d7e40-9f6f-41a6-ad0c-ccd22d307f88.png)
+![image](![image](https://user-images.githubusercontent.com/47313756/158076865-ffa574fe-5330-424e-a6c1-e12e3fee8e7f.png))
 
 
 # Data Visualization
