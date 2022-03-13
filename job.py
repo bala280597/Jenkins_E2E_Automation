@@ -109,7 +109,6 @@ class Jenkins:
         with open('config.xml.jinja2') as configfile_:
             config_template = Template(configfile_.read())
         config_render_file = config_template.render(REPO_NAME=repo_name, REPO_OWNER=repo_owner)
-        print(config_render_file)
         f = open("config.xml", "w")
         f.write(config_render_file)
         f.close()
