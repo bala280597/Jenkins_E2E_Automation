@@ -69,11 +69,11 @@ class Jenkins:
         repo = g.get_repo(self.repo)
         file_list = [
             'Jenkinsfile',
-            './sql/Build.py'
+            '/sql/Build.py'
         ]
         file_names = [
             'Jenkinsfile',
-            './sql/Build.py'
+            '/sql/Build.py'
         ]
         commit_message = 'Jenkins file added '
         master_ref = repo.get_git_ref(self.branch)
