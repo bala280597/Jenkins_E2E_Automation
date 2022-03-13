@@ -30,14 +30,13 @@ class Jenkins:
           sonar.projects.create_project(project="Bala", name="Bala", visibility="private")
         except:
           print("Repo already exist")
-        else:
-          try:  
-            sonar.webhooks.create_webhook(name= repo_name,
+        try:
+          sonar.webhooks.create_webhook(name= repo_name,
                                            project= repo_name,
                                            url="http://34.102.134.5:8080/sonarqube-webhook/",
                                            secret=self.jenkins_password)
-          except:
-            print("WebHook already exist")
+        except:
+          print("WebHook already exist")
                
 
     def sql_insert_data(self):
