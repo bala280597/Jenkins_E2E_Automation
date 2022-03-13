@@ -16,6 +16,9 @@ pipeline{
                 {% if STACK == "Maven" %}
                  sh """ mvn package"""
                 {% endif %}
+                {% if STACK == "C/C++" %}
+                 sh """ mkdir build && cd build && cmake .. && make"""
+                {% endif %}
                 withSonarQubeEnv('sonarqube') {
                       {% if STACK == "Maven" %}
                       sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey={{ REPO }} -Dsonar.sources=. -Dsonar.java.binaries=./target/** "
