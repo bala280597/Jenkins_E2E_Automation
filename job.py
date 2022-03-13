@@ -10,7 +10,7 @@ from sonarqube import SonarQubeClient
 
 class Jenkins:
 
-    def __init__(self, jobname,token,repo,branch,build,deploy,jenkins_username,jenkins_password):
+    def __init__(self, jobname,token,repo,branch,build,deploy,jenkins_username,jenkins_password,stack):
         self.jobname = jobname
         self.token = token
         self.repo = repo
@@ -19,6 +19,7 @@ class Jenkins:
         self.deploy = deploy
         self.jenkins_username = jenkins_username
         self.jenkins_password = jenkins_password
+        self.stack =  stack
     
     def sonar_automation(self):
         sonar = SonarQubeClient(sonarqube_url="http://104.198.141.127:9000", username=self.jenkins_username, password=self.jenkins_password)
@@ -101,7 +102,7 @@ class Jenkins:
         repo = repository.split('/')
         repo_owner = repo[0]
         repo_name = repo[1]
-        render_file = template.render(BUILD_TYPE=self.build, DEPLOY_TYPE=self.deploy,REPO=repo_name)
+        render_file = template.render(BUILD_TYPE=self.build, DEPLOY_TYPE=self.deploy, REPO=repo_name, STACK=self.stack)
         f = open("Jenkinsfile", "w")
         f.write(render_file)
         f.close()
@@ -123,6 +124,7 @@ if __name__ == '__main__':
     jobname = sys.argv[6]
     jenkins_username = sys.argv[7]
     jenkins_password = sys.argv[8]
+    stack = sys.argv[9]
     
     job_automation = Jenkins(jobname,token,repo,branch,build,deploy,jenkins_username,jenkins_password)
     job_automation.template()
