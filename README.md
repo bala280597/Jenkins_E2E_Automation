@@ -58,12 +58,14 @@ pipeline{
 ```
 # Sonar Integration
 Sonarqube is integrated to analyze source code.
-![image](https://user-images.githubusercontent.com/47313756/155874508-288d7e40-9f6f-41a6-ad0c-ccd22d307f88.png)
+![Sonar](https://user-images.githubusercontent.com/47313756/158076895-36586124-f949-45ba-b976-8091821697ae.png)
+
 
 
 # Data Visualization
 Hosted SQL Server in Kubernetes cluster as Stateful set and expose it as Load Balancer Service. Data from Jenkins job inserted into MYSQL Database.
 Data in Database is visualized in Grafana.
 
-![Grafana](https://user-images.githubusercontent.com/47313756/155077273-a9c50f98-6013-4e30-9203-4cfd64d62e73.png)
+![Grafana](https://user-images.githubusercontent.com/47313756/158076958-4525c00a-188e-4b68-9231-9792723ecae9.png)
+
 
