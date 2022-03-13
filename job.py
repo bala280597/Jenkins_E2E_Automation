@@ -26,13 +26,15 @@ class Jenkins:
         repository=self.repo
         repo = repository.split('/')
         repo_name = repo[1]
-        sonar.projects.create_project(project=repo_name, name=repo_name, visibility="private")
-        sonar.webhooks.create_webhook(name= repo_name,
-                                       project= repo_name,
-                                       url="http://34.102.134.5:8080/sonarqube-webhook/",
-                                       secret=self.jenkins_password)
+        try:
+            sonar.projects.create_project(project=repo_name, name=repo_name, visibility="private")
+            sonar.webhooks.create_webhook(name= repo_name,
+                                           project= repo_name,
+                                           url="http://34.102.134.5:8080/sonarqube-webhook/",
+                                           secret=self.jenkins_password)
+        except:
+            print("Project already exist")
         
-
     def sql_insert_data(self):
         cnx = mysql.connector.connect(user='root', password=self.jenkins_password,
                                       host='34.70.1.185',database='metrics')
