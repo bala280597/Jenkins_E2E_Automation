@@ -26,7 +26,7 @@ class Jenkins:
         repository=self.repo
         repo = repository.split('/')
         repo_name = repo[1]
-        sonar.projects.create_project(project="Bala", name="Bala", visibility="private")
+        sonar.projects.create_project(project=repo_name, name=repo_name, visibility="private")
         sonar.webhooks.create_webhook(name= repo_name,
                                        project= repo_name,
                                        url="http://34.102.134.5:8080/sonarqube-webhook/",
